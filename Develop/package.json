@@ -13,7 +13,9 @@
   },
   "author": "Tarah McElyea",
   "license": "ISC",
+  "homepage": "https://github.com/tmcelyea93/note-taker#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "path": "^0.12.7"
   }
 }
