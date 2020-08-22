@@ -1,10 +1,11 @@
 var express = require("express");
 var fs = require("fs");
+var path = require("path");
 
-var notesInfo = require("/db/db.json");
+var notesInfo = require("./db.json");
 
 var app = express();
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -24,7 +25,7 @@ app.post("/api/notes", function(req,res){
     notesInfo.push(newNote);
     addId();
     let save = JSON.stringify(notesInfo);
-    fs.writeFileSync("/db.json",save)
+    fs.writeFileSync("db.json",save)
 
     res.redirect('back');
 });
@@ -38,14 +39,15 @@ app.delete("/api/notes/:id", function (req,res) {
 
 function addId() {
     notesInfo.forEach((element, i) => {
-        element.id = i;
+        element.id = i + 1;
     });
 };
 let reWrite = () => {
     let newDB = JSON.stringify(notesInfo);
-    fs.writeFile('db/db.json', newDB, err => { if (err) throw err });
+    fs.writeFile('db.json', newDB, err => { if (err) throw err });
 };
 
 app.get("/api/notes", function (req, res) {
-    return res.json(db.json);
+    return res.json(notesInfo);
 });
+
