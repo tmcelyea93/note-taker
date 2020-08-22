@@ -14,4 +14,4 @@ Path
 
 ## Example
 Here is an example of how the application should run
-![command line example](./note-taker-gif.gif)
+![command line example](.images/note-taker-gif.gif)
